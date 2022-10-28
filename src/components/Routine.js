@@ -17,7 +17,7 @@ const Routine = ({routine, setRoutines, token}) => {
             <div>
                 <h4>Activities</h4>
                 {
-                    activities.map(activity => <Activity activity={activity}/>)
+                    activities.map(activity => <Activity key={activity.id} activity={activity}/>)
                 }
             </div>
         </>

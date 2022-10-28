@@ -21,6 +21,9 @@ const Nav = ({ token, setToken }) => {
                     <Link to="/user/routines">My Routines</Link>
                 </li>
                 <li>
+                    <Link to="/activities">Activities</Link>
+                </li>
+                <li>
                     <div className="dropdown-menu">
                         {
                         token ?

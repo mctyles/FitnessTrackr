@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { fetchUser } from './api';
 
 import AccountForm from './components/AccountForm';
+import Activities from './components/Activities';
 import Home from './components/Home';
 import Header from './components/Header';
 import Nav from './components/Nav';
@@ -16,6 +17,7 @@ const App = () => {
     const [token, setToken] = useState(window.localStorage.getItem('token') || '');
     const [user, setUser] = useState(null)
     const [routines, setRoutines] = useState([]);
+    const [activities, setActivities] = useState([]);
 
     useEffect(() => {
         if (token) {
@@ -41,6 +43,7 @@ const App = () => {
                         <Route path="/account/:action" element ={<AccountForm setToken = {setToken}/>}></Route>
                         <Route path="/routines" element={<Routines routines={routines} setRoutines={setRoutines}/>}></Route>
                         <Route path="/user/routines" element={<UserRoutines routines={routines} setRoutines={setRoutines} user={user}/>}></Route>
+                        <Route path="/activities" element={<Activities activities={activities} setActivities={setActivities} token = {token} user={user}/>}></Route>
                     </Routes>
             </div>
         </BrowserRouter> 

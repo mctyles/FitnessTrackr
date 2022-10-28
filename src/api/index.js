@@ -48,3 +48,8 @@ export const fetchRoutines = async () => {
     const data = callApi({path: 'routines'})
     return data;
 }
+
+export const fetchActivities = async () => {
+    const data = callApi({path: 'activities'})
+    return data;
+}
