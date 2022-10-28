@@ -7,11 +7,14 @@ import { fetchUser } from './api';
 import AccountForm from './components/AccountForm';
 import Home from './components/Home';
 import Header from './components/Header';
+import Nav from './components/Nav';
+import Routines from './components/Routines';
 
 const App = () => {
     
     const [token, setToken] = useState(window.localStorage.getItem('token') || '');
     const [user, setUser] = useState(null)
+    const [routines, setRoutines] = useState([]);
 
     useEffect(() => {
         if (token) {
@@ -31,9 +34,11 @@ const App = () => {
         <BrowserRouter>
             <div>
                 <Header />
+                <Nav token ={token} setToken={setToken}/>
                     <Routes>
                         <Route path="/" element={<Home user={user} token={token}/>}></Route>
                         <Route path="/account/:action" element ={<AccountForm setToken = {setToken}/>}></Route>
+                        <Route path="/routines" element={<Routines routines={routines} setRoutines={setRoutines}/>}></Route>
                     </Routes>
             </div>
         </BrowserRouter> 

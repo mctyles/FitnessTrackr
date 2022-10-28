@@ -43,3 +43,8 @@ export const fetchUser = async (token) => {
     const data = callApi({path: 'users/me', token})
     return data;
 }
+
+export const fetchRoutines = async () => {
+    const data = callApi({path: 'routines'})
+    return data;
+}
