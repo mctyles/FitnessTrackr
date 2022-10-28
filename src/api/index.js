@@ -53,3 +53,15 @@ export const fetchActivities = async () => {
     const data = callApi({path: 'activities'})
     return data;
 }
+
+export const addRoutine = async (token, name, goal) => {
+    const path = 'routines/'
+
+    const data = await callApi({method: 'post', path: path, body :
+        {
+          name,
+          goal,
+        },
+    })
+    return data;
+}

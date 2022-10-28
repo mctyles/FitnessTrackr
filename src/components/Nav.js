@@ -17,27 +17,30 @@ const Nav = ({ token, setToken }) => {
                 <li>
                     <Link to="/routines">Routines</Link>
                 </li>
-                <li>
-                    <Link to="/user/routines">My Routines</Link>
-                </li>
+                {
+                    token &&
+                    <li>
+                        <Link to="/user/routines">My Routines</Link>
+                    </li>
+                }
                 <li>
                     <Link to="/activities">Activities</Link>
                 </li>
                 <li>
-                    <div className="dropdown-menu">
+                    <div>
                         {
                         token ?
                         <>
-                            <Link className ="dropdown-item" to="/profile/home">Profile</Link>
-                            <a className ="dropdown-item" href="#" onClick = { () => {
+                            <Link to="/profile/home">Profile</Link>
+                            <a href="#" onClick = { () => {
                                 logout();
                                 return false;
                             }
                             }> Log Out</a>
                         </> :
                         <>
-                            <Link className ="dropdown-item" to="/account/login"> Login</Link>
-                            <Link className ="dropdown-item" to="/account/signup"> Sign Up</Link>
+                            <Link to="/account/login"> Login</Link>
+                            <Link to="/account/signup"> Sign Up</Link>
                         </>
                         }
                     </div>
