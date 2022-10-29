@@ -3,7 +3,7 @@ import { fetchUserRoutines } from "../api";
 import Routine from "./Routine";
 import CreateRoutineForm from "./CreateRoutineForm";
 
-const UserRoutines = ({token, user, setRoutines}) => {
+const UserRoutines = ({ activities, setActivities, token, user, setRoutines}) => {
 
     const [userRoutines, setUserRoutines] = useState([]);
     const [createRoutineActive, setCreateRoutineActive] = useState(false);
@@ -32,7 +32,7 @@ const UserRoutines = ({token, user, setRoutines}) => {
             }
             {
                 userRoutines.map(routine => {
-                    return <Routine key={routine.id} routine={routine} token={token} user={user}/>
+                    return <Routine key={routine.id} activities={activities} setActivities={setActivities} setRoutines={setRoutines} routine={routine} token={token} user={user}/>
                 })
             }
         </div>

@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import { deleteRoutine } from '../api';
 import Activity from './Activity';
+import RoutineActivityForm from './RoutineActivityForm';
 
-const Routine = ({routine, setRoutines, token, user}) => {
+const Routine = ({activities, setActivities, routine, setRoutines, token, user}) => {
     
-    const { activities } = routine;
+    const routineActivities = routine.activities;
 
     const destroyRoutine = async (token, routineId) => {
         try {
@@ -27,10 +28,10 @@ const Routine = ({routine, setRoutines, token, user}) => {
             <div>
                 <h4>Activities</h4>
                 {
-                    activities.map(activity => <Activity key={activity.id} activity={activity}/>)
+                    routineActivities.map(activity => <Activity key={activity.id} activity={activity}/>)
                 }
                 {
-                    !activities.length && <p>No activities to display.</p>
+                    !routineActivities.length && <p>No activities to display.</p>
                 }   
             </div>
             <Link className="btn btn-link" to={`/routines/${routine.id}`}>
@@ -43,6 +44,9 @@ const Routine = ({routine, setRoutines, token, user}) => {
                 >
                 Delete
                 </button>
+            )}
+            {routine.creatorName === user.username && (
+                <RoutineActivityForm activities={activities} setActivities={setActivities} routine={routine} token={token}/>
             )}
         </>
     )

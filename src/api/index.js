@@ -99,3 +99,16 @@ export const addActivity = async (token, name, description) => {
     })
     return data;
 }
+
+export const addActivityToRoutine = async (token, routineId, activityId, count, duration) => {
+    const path = `routines/${routineId}/activities/`;
+
+    const data = await callApi({method: 'post', path, token, body :
+        {
+          activityId,  
+          count,
+          duration
+        },
+    })
+    return data;
+}
