@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { addRoutine } from '../api';
 
-const CreateRoutineForm = ({setRoutines, routines, token}) => {
+const CreateRoutineForm = ({setRoutines, token}) => {
     const [routineName, setRoutineName] = useState('');
     const [routineGoal, setRoutineGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false);

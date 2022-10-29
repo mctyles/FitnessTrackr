@@ -3,9 +3,7 @@ import { fetchRoutines } from "../api";
 import Routine from "./Routine";
 import CreateRoutineForm from "./CreateRoutineForm";
 
-const Routines = ({routines, setRoutines, token}) => {
-
-    const [createRoutineActive, setCreateRoutineActive] = useState(false);
+const Routines = ({routines, setRoutines, token, user}) => {
     
     useEffect(() => {
         const getRoutines = async () => {
@@ -19,18 +17,8 @@ const Routines = ({routines, setRoutines, token}) => {
         <div>
             <h1>Routines</h1>
             {
-                token &&
-                <button className="btn btn-outline-primary mb-3"
-                onClick={() => {setCreateRoutineActive(!createRoutineActive)}}>
-                {!createRoutineActive ? 'Create New Routine' : 'Hide New Routine Form'}
-                </button>
-            }
-            {createRoutineActive &&
-            <CreateRoutineForm token={token} setRoutines={setRoutines} routines={routines}/>
-            }
-            {
                 routines.map(routine => {
-                    return <Routine key={routine.id} routine={routine} setRoutines={setRoutines} token={token}/>
+                    return <Routine key={routine.id} routine={routine} setRoutines={setRoutines} token={token} user={user}/>
                 })
             }
         </div>

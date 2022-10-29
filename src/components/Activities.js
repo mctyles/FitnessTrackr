@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { fetchActivities } from "../api";
 import Activity from "./Activity";
+import CreateActivityForm from "./CreateActivityForm";
 
 const Activities = ({activities, setActivities, user, token}) => {
     useEffect(() => {
@@ -14,6 +15,7 @@ const Activities = ({activities, setActivities, user, token}) => {
     return (
         <div>
             <h1>Activities</h1>
+            <CreateActivityForm setActivities={setActivities} token={token}/>
             {
                 activities.map(activity => {
                     return <Activity key={activity.id} activity={activity} setActivities={setActivities} token={token}/>

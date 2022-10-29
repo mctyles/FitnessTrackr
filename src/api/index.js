@@ -70,11 +70,31 @@ export const fetchActivities = async () => {
 export const addRoutine = async (token, name, goal, isPublic) => {
     const path = 'routines/'
 
-    const data = await callApi({method: 'post', path: path, token, body :
+    const data = await callApi({method: 'POST', path: path, token, body :
         {
           isPublic,
           name,
           goal
+        },
+    })
+    return data;
+}
+
+export const deleteRoutine = async (token, id) => {
+    const path = `routines/${id}`
+
+    const data = await callApi({method: 'DELETE', path, token})
+    return data;
+}
+
+
+export const addActivity = async (token, name, description) => {
+    const path = 'activities/'
+
+    const data = await callApi({method: 'post', path: path, token, body :
+        {
+          name,
+          description
         },
     })
     return data;
