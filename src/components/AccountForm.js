@@ -18,6 +18,7 @@ const AccountForm = ({ setToken }) => {
             navigate('/');
         } catch(error) {
             setError(error);
+            console.error(error);
         }
 
     }
@@ -25,6 +26,7 @@ const AccountForm = ({ setToken }) => {
     return (
         <>
             <h1>{action === 'login' ? 'Log In' : 'Sign Up'}</h1>
+            {error && <div class="alert alert-danger" role="alert">{error}</div>}
             <form onSubmit={handleSubmit}>
                 <label htmlFor="username">Username</label>
                 <input type="text" id="username" value = {username} onChange={(event) => setUsername(event.target.value)}/>

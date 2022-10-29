@@ -7,7 +7,7 @@ const Routine = ({routine, setRoutines, token}) => {
 
     return (
         <>
-            <div className="card my-3">
+            <div>
                 <h5 className="card-header">{routine.name}</h5>
                 <div className="card-body">
                     <p className="card-title">Created by: {routine.creatorName}</p>

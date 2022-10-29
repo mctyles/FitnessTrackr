@@ -19,14 +19,14 @@ const Routines = ({routines, setRoutines, token}) => {
         <div>
             <h1>Routines</h1>
             {
-            token &&
-            <button className="btn btn-outline-primary mb-3"
+                token &&
+                <button className="btn btn-outline-primary mb-3"
                 onClick={() => {setCreateRoutineActive(!createRoutineActive)}}>
                 {!createRoutineActive ? 'Create New Routine' : 'Hide New Routine Form'}
                 </button>
             }
             {createRoutineActive &&
-            <CreateRoutineForm token={token} setRoutines={setRoutines}/>
+            <CreateRoutineForm token={token} setRoutines={setRoutines} routines={routines}/>
             }
             {
                 routines.map(routine => {
