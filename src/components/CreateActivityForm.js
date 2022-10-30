@@ -5,6 +5,8 @@ const CreateActivityForm = ({ setActivities, token }) => {
     const [activityName, setActivityName] = useState('');
     const [activityDescription, setActivityDescription] = useState('');
 
+    
+
     const handleSubmit = async (event) => {
         try {
             event.preventDefault()

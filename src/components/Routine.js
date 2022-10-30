@@ -19,16 +19,15 @@ const Routine = ({activities, setActivities, routine, setRoutines, token, user})
     }
 
     return (
-        <>
+        <section className="card m-3 p-3" id="routine-card">
             <div>
-                <h5 className="card-header">{routine.name}</h5>
-                <div className="card-body">
-                    <p className="card-title">Created by: {routine.creatorName}</p>
-                    <p className="card-title">Goal: {routine.goal}</p>
-                </div>
+                <h3 className="card-title text-dark">{routine.name}</h3>
+                <p className="card-subtitle text-muted">Created by: {routine.creatorName}</p>
+                <p className="card-text text-dark">Goal: {routine.goal}</p>
             </div>
+            <hr/>
             <div>
-                <h4>Activities</h4>
+                <h4 className="text-dark">Routine Activities</h4>
                 {
                     routineActivities.map(activity => <Activity key={activity.id} activity={activity} creatorName={creatorName} token={token} user={user}/>)
                 }
@@ -39,18 +38,23 @@ const Routine = ({activities, setActivities, routine, setRoutines, token, user})
             <Link className="btn btn-link" to={`/routines/${routine.id}`}>
                 View Routine
             </Link>
-            {routine.creatorName === user.username && (
+            {user && routine.creatorName === user.username ? (
                 <button
                 className="btn btn-link text-danger"
                 onClick={() => destroyRoutine(token, routine.id)}
                 >
-                Delete
+                Delete Routine
                 </button>
-            )}
-            {routine.creatorName === user.username && (
-                <RoutineActivityForm activities={activities} setActivities={setActivities} routine={routine} token={token}/>
-            )}
-        </>
+            )
+        :
+        null
+        }
+            {user && routine.creatorName === user.username ?
+                <RoutineActivityForm activities={activities} setActivities={setActivities} routine={routine} token={token}/> 
+                :
+            null
+            }
+        </section>
     )
 }
 

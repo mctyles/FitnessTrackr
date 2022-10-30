@@ -39,20 +39,20 @@ const RoutineActivityForm = ({activities, setActivities, routine, token}) => {
                 className="d-flex flex-column align-items-start m-3"
                 onSubmit={handleSubmit}
                 >
-                    <label for="activities">Select an activity to add:</label>
-                    <select id="activities" name="activities" onChange={(event) => setActivityId(event.target.value)}>
+                    <label className="text-dark" for="activities">Select an activity to add:</label>
+                    <select className="text-dark p-1" id="activities" name="activities" onChange={(event) => setActivityId(event.target.value)}>
                         {
                             activities.map(activity => <option value={activity.id}>{activity.name}</option>)
                         }
                     </select>
-                    <label htmlFor="count">Count:</label>
+                    <label className="text-dark" htmlFor="count">Count:</label>
                     <input type="text" 
                         name="count"
                         className="form-control"
                         value={count}
                         onChange={(event) => setCount(event.target.value)}
                     />
-                    <label htmlFor="duration">Duration:</label>
+                    <label className="text-dark" htmlFor="duration">Duration:</label>
                     <input type="text" 
                         name="duration"
                         className="form-control"

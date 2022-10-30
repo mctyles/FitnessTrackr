@@ -14,8 +14,8 @@ const Routines = ({activities, setActivities, routines, setRoutines, token, user
     } , []);
 
     return (
-        <div>
-            <h1>Routines</h1>
+        <div className="d-flex flex-column align-content-center">
+            <h1 className="m-3">Routines</h1>
             {
                 routines.map(routine => {
                     return <Routine key={routine.id} activities={activities} setActivities={setActivities} routine={routine} setRoutines={setRoutines} token={token} user={user}/>

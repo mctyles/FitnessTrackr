@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    color: #F2ECCE;
+}
+
+#account-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-content: center;
+}
+
+body {
+    background-color: #023373;
+}
+
+.card {
+    border: solid black 2px;
+    background-color: #f3f1ea;
+    padding:2rem;
+}
+
+.card-body {
+    background-color: #6889A6;
+}
+
+.card-header {
+    background-color: #1F598C;
+}
+
+#header {
+    background-color: #033E8C;
+}
+
+
+#title {
+    font-family: 'Chakra Petch', sans-serif;
+    font-size: 4rem;
+}
+
+#routine-card {
+    color: black;
+}

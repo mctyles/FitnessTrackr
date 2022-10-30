@@ -20,7 +20,7 @@ const CreateRoutineForm = ({setRoutines, token}) => {
     }
 
     return (
-        <div>
+        <div className='p5'>
         {
             token &&
                 <form 

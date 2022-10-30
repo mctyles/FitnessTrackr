@@ -21,9 +21,9 @@ const UserRoutines = ({ activities, setActivities, token, user, setRoutines}) =>
     } , []);
 
     return (
-        <div>
-            <h1>My Routines</h1>
-                <button className="btn btn-outline-primary mb-3"
+        <div className="d-flex flex-column align-items-center">
+            <h1 className="p3">My Routines</h1>
+                <button className="btn btn-outline-secondary bg-white mb-3"
                 onClick={() => {setCreateRoutineActive(!createRoutineActive)}}>
                 {!createRoutineActive ? 'Create New Routine' : 'Hide New Routine Form'}
                 </button>

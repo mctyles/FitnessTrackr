@@ -13,20 +13,20 @@ const Activity = ({activity, setActivity, token, creatorName, user}) => {
     }
 
     return (
-        <div>
-            <h5>{activity.name}</h5>
-            <p>{activity.description}</p>
+        <div className="card m-3">
+            <h5 className="text-dark">{activity.name}</h5>
+            <p className="text-dark">{activity.description}</p>
             {
                 activity.duration && activity.count ?   
-                <ul>
-                    <li>Duration: {activity.duration}</li>
-                    <li>Count: {activity.count}</li>
+                <ul className="text-dark">
+                    <li className="text-dark">Duration: {activity.duration}</li>
+                    <li className="text-dark">Count: {activity.count}</li>
                 </ul>
                 :
                 null
             }
             {
-                activity.routineActivityId && creatorName === user.username ?
+                user && activity.routineActivityId && creatorName === user.username ?
                 <button
                 className="btn btn-link text-danger"
                 onClick={() => destroyRoutineActivity(token, activity.routineActivityId, activity.routineId)}

@@ -1,51 +1,58 @@
 import { Link, useNavigate } from 'react-router-dom';
 
-const Nav = ({ token, setToken }) => {
+const Nav = ({ token, setToken, user, setUser }) => {
     const navigate = useNavigate();
 
     const logout = () => {
         setToken('');
+        setUser(null);
         navigate('/');
     }
 
     return (
-        <nav>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/routines">Routines</Link>
-                </li>
-                {
-                    token &&
-                    <li>
-                        <Link to="/user/routines">My Routines</Link>
+        <nav id="nav" className='nav d-flex p-2 flex-row justify-content-between bg-light'>
+                <ul className="nav nav-pills d-flex p-2 flex-row">
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/">Home</Link>
                     </li>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/routines">Routines</Link>
+                    </li>
+                    {
+                        token &&
+                        <li className="nav-item">
+                            <Link className="nav-link" to="/user/routines">My Routines</Link>
+                        </li>
+                    }
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/activities">Activities</Link>
+                    </li>
+                </ul>    
+                <ul className="nav nav-pills d-flex p-2 flex-row">
+            <li className="nav-item dropdown">
+                {
+                token ?
+                <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">{user ? user.username : 'Account'}</a> :
+                <a className="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Log In / Sign Up</a>
                 }
-                <li>
-                    <Link to="/activities">Activities</Link>
-                </li>
-                <li>
-                    <div>
-                        {
-                        token ?
-                        <>
-                            <Link to="/profile/home">Profile</Link>
-                            <a href="#" onClick = { () => {
-                                logout();
-                                return false;
-                            }
-                            }> Log Out</a>
-                        </> :
-                        <>
-                            <Link to="/account/login"> Login</Link>
-                            <Link to="/account/signup"> Sign Up</Link>
-                        </>
+                <div className="dropdown-menu">
+                    {
+                    token ?
+                    <>
+                        <a className ="dropdown-item" href="#" onClick = { () => {
+                            logout();
+                            return false;
                         }
-                    </div>
-                </li>
-            </ul>
+                        }> Log Out</a>
+                    </> :
+                    <>
+                        <Link className ="dropdown-item" to="/account/login"> Login</Link>
+                        <Link className ="dropdown-item" to="/account/signup"> Sign Up</Link>
+                    </>
+                    }
+                </div>
+            </li>
+        </ul>
         </nav>
     )
 }

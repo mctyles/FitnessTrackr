@@ -38,7 +38,7 @@ const App = () => {
         <BrowserRouter>
             <div>
                 <Header />
-                <Nav token ={token} setToken={setToken}/>
+                <Nav token ={token} setToken={setToken} user={user} setUser={setUser}/>
                     <Routes>
                         <Route path="/" element={<Home user={user} token={token}/>}></Route>
                         <Route path="/account/:action" element ={<AccountForm setToken = {setToken}/>}></Route>
