@@ -1,19 +1,20 @@
-import { useState } from 'react';
-import { addRoutine } from '../api';
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { updateRoutine } from "../api";
 
-const CreateRoutineForm = ({setRoutines, token}) => {
-    const [routineName, setRoutineName] = useState('');
-    const [routineGoal, setRoutineGoal] = useState('');
-    const [isPublic, setIsPublic] = useState(false);
+const EditRoutine = ({routine, setEditRoutineActive, token}) => {
+    const [routineName, setRoutineName] = useState(`${routine.name}`);
+    const [routineGoal, setRoutineGoal] = useState(`${routine.goal}`);
+    const [isPublic, setIsPublic] = useState(routine.isPublic);
+
+    const navigate = useNavigate();
+    const routineId = routine.id;
 
     const handleSubmit = async (event) => {
         try {
             event.preventDefault()
-            const newRoutine = await addRoutine(token, routineName, routineGoal, isPublic);
-            setRoutines((prev) => [newRoutine, ...prev]);
-            setRoutineName("");
-            setRoutineGoal("");
-            setIsPublic(false);
+            const editedRoutine = await updateRoutine(token, routineName, routineGoal, isPublic, routineId);
+            navigate(`/routines/${routineId}`)
         } catch(err) {
             console.error(err);
         }
@@ -24,20 +25,19 @@ const CreateRoutineForm = ({setRoutines, token}) => {
         {
             token &&
                 <form 
-                className="d-flex flex-column align-items-start m-3"
+                className="card m-3 p-3"
                 onSubmit={handleSubmit}
                 >
-                    <label htmlFor="name">Name:</label>
                     <input type="text" 
                         name="name"
-                        className="form-control"
+                        className="form-control card-title text-dark"
                         value={routineName}
                         onChange={(event) => setRoutineName(event.target.value)}
                     />
                     <label className="mt-2" htmlFor="goal">Goal:</label>
                     <textarea type="text" 
                         name="goal"
-                        className="form-control"
+                        className="form-control card-text text-dark"
                         value={routineGoal}
                         onChange={(event) => setRoutineGoal(event.target.value)}
                     />
@@ -55,10 +55,12 @@ const CreateRoutineForm = ({setRoutines, token}) => {
                             }}
                         />
                     </div>
-                    <button className="btn btn-outline-light mt-3" type='submit'>Post</button>
+                    <button className="btn btn-outline-light mt-3" type='submit'>Submit Changes</button>
+                    <button className="btn btn-outline-danger ml-2" onClick={() => setEditRoutineActive(false)}>Cancel</button>
                 </form>
         }
         </div>
-    )}
+    )
+}
 
-export default CreateRoutineForm;
+export default EditRoutine;

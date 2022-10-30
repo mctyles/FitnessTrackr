@@ -32,7 +32,7 @@ const Routine = ({activities, setActivities, routine, setRoutines, token, user})
                     routineActivities.map(activity => <Activity key={activity.id} activity={activity} creatorName={creatorName} token={token} user={user}/>)
                 }
                 {
-                    !routineActivities.length && <p>No activities to display.</p>
+                    !routineActivities.length && <p className='text-dark'>No activities to display.</p>
                 }   
             </div>
             <Link className="btn btn-link" to={`/routines/${routine.id}`}>
@@ -50,7 +50,11 @@ const Routine = ({activities, setActivities, routine, setRoutines, token, user})
         null
         }
             {user && routine.creatorName === user.username ?
-                <RoutineActivityForm activities={activities} setActivities={setActivities} routine={routine} token={token}/> 
+                <>
+                    <hr/>
+                    <h5 className='text-dark'>Add Activity To Routine:</h5>
+                    <RoutineActivityForm activities={activities} setActivities={setActivities} routine={routine} token={token}/> 
+                </>
                 :
             null
             }

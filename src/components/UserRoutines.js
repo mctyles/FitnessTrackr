@@ -3,9 +3,8 @@ import { fetchUserRoutines } from "../api";
 import Routine from "./Routine";
 import CreateRoutineForm from "./CreateRoutineForm";
 
-const UserRoutines = ({ activities, setActivities, token, user, setRoutines}) => {
-
-    const [userRoutines, setUserRoutines] = useState([]);
+const UserRoutines = ({ activities, setActivities, token, user, setRoutines, userRoutines, setUserRoutines}) => {
+    
     const [createRoutineActive, setCreateRoutineActive] = useState(false);
 
     
@@ -21,9 +20,9 @@ const UserRoutines = ({ activities, setActivities, token, user, setRoutines}) =>
     } , []);
 
     return (
-        <div className="d-flex flex-column align-items-center">
-            <h1 className="p3">My Routines</h1>
-                <button className="btn btn-outline-secondary bg-white mb-3"
+        <div className="d-flex flex-column align-content-center">
+            <h1 className="mt-3 ml-3 p3">My Routines</h1>
+                <button className="mt-3 ml-3 align-self-start btn btn-outline-light mt-3"
                 onClick={() => {setCreateRoutineActive(!createRoutineActive)}}>
                 {!createRoutineActive ? 'Create New Routine' : 'Hide New Routine Form'}
                 </button>
@@ -32,7 +31,7 @@ const UserRoutines = ({ activities, setActivities, token, user, setRoutines}) =>
             }
             {
                 userRoutines.map(routine => {
-                    return <Routine key={routine.id} activities={activities} setActivities={setActivities} setRoutines={setRoutines} routine={routine} token={token} user={user}/>
+                    return <Routine key={routine.id} activities={activities} setActivities={setActivities} setRoutines={setRoutines} routine={routine} token={token} user={user} userRoutines={userRoutines}/>
                 })
             }
         </div>

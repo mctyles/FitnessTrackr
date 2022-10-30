@@ -10,22 +10,34 @@ const Nav = ({ token, setToken, user, setUser }) => {
     }
 
     return (
-        <nav id="nav" className='nav d-flex p-2 flex-row justify-content-between bg-light'>
+        <nav id="nav" className='nav d-flex p-1 flex-row justify-content-between bg-light'>
                 <ul className="nav nav-pills d-flex p-2 flex-row">
                     <li className="nav-item">
-                        <Link className="nav-link" to="/">Home</Link>
+                        <div className='nav-link d-flex align-items-center'>
+                            <span className="material-symbols-outlined text-dark">house</span>
+                            <Link to="/">Home</Link>
+                        </div>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/routines">Routines</Link>
+                        <div className='nav-link d-flex align-items-center'>
+                            <span className="material-symbols-outlined text-dark">run_circle</span>
+                            <Link to="/routines">Routines</Link>
+                        </div>
                     </li>
                     {
                         token &&
                         <li className="nav-item">
-                            <Link className="nav-link" to="/user/routines">My Routines</Link>
+                            <div className='nav-link d-flex align-items-center'>
+                                <span className="material-symbols-outlined text-dark">settings_accessibility</span>
+                                <Link to="/user/routines"> My Routines</Link>
+                            </div>
                         </li>
                     }
                     <li className="nav-item">
-                        <Link className="nav-link" to="/activities">Activities</Link>
+                        <div className='nav-link d-flex align-items-center'>
+                            <span className="material-symbols-outlined text-dark">sports_gymnastics</span>
+                            <Link to="/activities"> Activities</Link>
+                        </div>
                     </li>
                 </ul>    
                 <ul className="nav nav-pills d-flex p-2 flex-row">

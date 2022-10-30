@@ -78,6 +78,19 @@ export const addRoutine = async (token, name, goal, isPublic) => {
     return data;
 }
 
+export const updateRoutine = async (token, name, goal, isPublic, id) => {
+    const path = `routines/${id}`
+
+    const data = await callApi({method: 'PATCH', path, token, body :
+        {
+          isPublic,
+          name,
+          goal
+        },
+    })
+    return data;
+}
+
 export const deleteRoutine = async (token, id) => {
     const path = `routines/${id}`
 
