@@ -6,6 +6,8 @@ import RoutineActivityForm from './RoutineActivityForm';
 const Routine = ({activities, setActivities, routine, setRoutines, token, user}) => {
     
     const routineActivities = routine.activities;
+    const { creatorName } = routine;
+    console.log(routine);
 
     const destroyRoutine = async (token, routineId) => {
         try {
@@ -28,7 +30,7 @@ const Routine = ({activities, setActivities, routine, setRoutines, token, user})
             <div>
                 <h4>Activities</h4>
                 {
-                    routineActivities.map(activity => <Activity key={activity.id} activity={activity}/>)
+                    routineActivities.map(activity => <Activity key={activity.id} activity={activity} creatorName={creatorName} token={token} user={user}/>)
                 }
                 {
                     !routineActivities.length && <p>No activities to display.</p>

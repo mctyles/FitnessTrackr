@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import { addActivityToRoutine, fetchActivities } from '../api';
+import { useNavigate } from 'react-router-dom'
 
 const RoutineActivityForm = ({activities, setActivities, routine, token}) => {
     
     const [count, setCount] = useState('');
     const [duration, setDuration] = useState('');
     const [activityId, setActivityId] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const getActivities = async () => {
@@ -22,6 +25,7 @@ const RoutineActivityForm = ({activities, setActivities, routine, token}) => {
             const newRoutineActivity = await addActivityToRoutine(token, routine.id, activityId, count, duration);
             setCount("");
             setDuration("");
+            navigate('/user/routines')
         } catch(err) {
             console.error(err);
         }

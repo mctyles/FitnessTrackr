@@ -1,4 +1,4 @@
-import {useParams} from 'react-router-dom';
+import {useParams, Link} from 'react-router-dom';
 import Activity from './Activity';
 
 const SingleRoutine = ({ routines }) => {
@@ -26,7 +26,9 @@ const SingleRoutine = ({ routines }) => {
                 }
                 {
                     !activities.length && <p>No activities to display.</p>
-                }   
+                }
+                <Link to="/routines" className="btn btn-link text-info">Back to routines</Link>
+
             </div>
         </>
     )

@@ -3,7 +3,7 @@ import { fetchRoutines } from "../api";
 import Routine from "./Routine";
 import CreateRoutineForm from "./CreateRoutineForm";
 
-const Routines = ({routines, setRoutines, token, user}) => {
+const Routines = ({activities, setActivities, routines, setRoutines, token, user}) => {
     
     useEffect(() => {
         const getRoutines = async () => {
@@ -18,7 +18,7 @@ const Routines = ({routines, setRoutines, token, user}) => {
             <h1>Routines</h1>
             {
                 routines.map(routine => {
-                    return <Routine key={routine.id} routine={routine} setRoutines={setRoutines} token={token} user={user}/>
+                    return <Routine key={routine.id} activities={activities} setActivities={setActivities} routine={routine} setRoutines={setRoutines} token={token} user={user}/>
                 })
             }
         </div>

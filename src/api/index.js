@@ -18,9 +18,7 @@ export const callApi = async ({ method, path, token, body }) => {
       options.body = JSON.stringify(body);
     }
   
-    //const result = await axios({url: (baseUrl + path), ...options});
     const result = await fetch(baseUrl + path, options);
-    //const { data } = result;
     const data = await result.json();
     console.log(data);
     if (data.error) {
@@ -110,5 +108,12 @@ export const addActivityToRoutine = async (token, routineId, activityId, count, 
           duration
         },
     })
+    return data;
+}
+
+export const deleteRoutineActivity = async (token, id) => {
+    const path = `routine_activities/${id}`
+
+    const data = await callApi({method: 'DELETE', path, token})
     return data;
 }
