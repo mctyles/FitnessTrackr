@@ -17,6 +17,8 @@ const Activities = ({ activities, setActivities, token }) => {
   return (
     <div>
       <h1 className="mt-3 ml-3">Activities</h1>
+      {
+        token &&
       <button
         className="mt-3 ml-3 align-self-start btn btn-outline-light"
         onClick={() => {
@@ -27,6 +29,7 @@ const Activities = ({ activities, setActivities, token }) => {
           ? "Create New Activity"
           : "Hide New Activity Form"}
       </button>
+    }
       {createActivityActive && (
         <CreateActivityForm setActivities={setActivities} token={token} />
       )}
