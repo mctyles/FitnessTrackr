@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import EditRoutineActivity from "./EditRoutineActivity";
 
-const Activity = ({activity, setActivity, token, creatorName, user, setSuccessMsg}) => {
+const Activity = ({activity, token, creatorName, user, setSuccessMsg}) => {
     const [editActivityActive, setEditActivityActive] = useState(false);
     
     const navigate = useNavigate();

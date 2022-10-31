@@ -1,15 +1,19 @@
 import { useState } from "react";
 import { updateRoutineActivity } from "../api";
+import { useNavigate } from 'react-router-dom';
 
-const EditRoutineActivity = ({activity, token, setEditActivityActive, setSuccessMsg}) => {
+const EditRoutineActivity = ({activity, token, setSuccessMsg}) => {
   const [count, setCount] = useState(`${activity.count}`);
   const [duration, setDuration] = useState(`${activity.duration}`);
+
+  const navigate = useNavigate();
   
   const handleSubmit = async (event) => {
     try {
         event.preventDefault()
         const editedRoutineActivity = await updateRoutineActivity(token, activity.routineActivityId, count, duration);
-        setEditActivityActive(false);
+        setSuccessMsg(`${activity.name} was successfully updated.`);
+        navigate('/');
     } catch(err) {
         console.error(err);
     }

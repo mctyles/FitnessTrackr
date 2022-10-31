@@ -31,7 +31,7 @@ const Routine = ({
         <p className="card-subtitle text-muted">
           Created by: {routine.creatorName}
         </p>
-        <p className="card-text text-dark">Goal: {routine.goal}</p>
+        <h5 className="card-text text-dark mt-3">Goal: {routine.goal}</h5>
       </div>
       <hr />
       <div>
