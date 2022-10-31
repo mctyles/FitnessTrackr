@@ -20,6 +20,7 @@ const App = () => {
     const [routines, setRoutines] = useState([]);
     const [userRoutines, setUserRoutines] = useState([]);
     const [activities, setActivities] = useState([]);
+    const [successMsg, setSuccessMsg] = useState('');
 
     useEffect(() => {
         if (token) {
@@ -31,6 +32,10 @@ const App = () => {
         }
     }, [token])
 
+    useEffect(() => {
+        setSuccessMsg('');
+    }, [routines, userRoutines, activities])
+
     useEffect (() => {
         window.localStorage.setItem('token', token)
     }, [token])
@@ -41,10 +46,10 @@ const App = () => {
                 <Header />
                 <Nav token ={token} setToken={setToken} user={user} setUser={setUser}/>
                     <Routes>
-                        <Route path="/" element={<Home user={user} token={token}/>}></Route>
+                        <Route path="/" element={<Home user={user} token={token} successMsg={successMsg} setSuccessMsg={setSuccessMsg}/>}></Route>
                         <Route path="/account/:action" element ={<AccountForm setToken = {setToken}/>}></Route>
-                        <Route path="/routines" element={<Routines activities={activities} setActivities={setActivities} routines={routines} setRoutines={setRoutines} token={token} user={user}/>}></Route>
-                        <Route path="/user/routines" element={<UserRoutines activities={activities} setActivities={setActivities} routines={routines} setRoutines={setRoutines} userRoutines={userRoutines} setUserRoutines={setUserRoutines} user={user} token={token}/>}></Route>
+                        <Route path="/routines" element={<Routines activities={activities} setActivities={setActivities} routines={routines} setRoutines={setRoutines} token={token} user={user} setSuccessMsg={setSuccessMsg}/>}></Route>
+                        <Route path="/user/routines" element={<UserRoutines activities={activities} setActivities={setActivities} routines={routines} setRoutines={setRoutines} userRoutines={userRoutines} setUserRoutines={setUserRoutines} user={user} token={token} setSuccessMsg={setSuccessMsg}/>}></Route>
                         <Route path='/routines/:routineId' element={<SingleRoutine routines={routines} setUserRoutines={setUserRoutines} user={user} token={token} userRoutines={userRoutines}/>}></Route>
                         <Route path="/activities" element={<Activities activities={activities} setActivities={setActivities} token = {token} user={user}/>}></Route>
                     </Routes>

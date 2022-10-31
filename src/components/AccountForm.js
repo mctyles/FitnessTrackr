@@ -25,9 +25,9 @@ const AccountForm = ({ setToken }) => {
     return (
         <main id="account-form" className="p-4">
             <h3>{action === 'login' ? 'Log In' : 'Sign Up'}</h3>
-            {error && <div className="alert alert-danger" role="alert">{error}</div>}
+            {error && <div className="alert alert-danger mt-3" role="alert">{error}</div>}
             <form className = "d-flex flex-column align-items-start m-3" onSubmit={handleSubmit}>
-                <label className="mt-2" htmlFor="username">Username</label>
+                <label className="mt-1" htmlFor="username">Username</label>
                 <input className="form-control mt-2" type="text" id="username" value = {username} onChange={(event) => setUsername(event.target.value)}/>
                 <label className="mt-2" htmlFor="password">Password</label>
                 <input className="form-control mt-2" type="password" id="password" value = {password} onChange={(event) => setPassword(event.target.value)}/>

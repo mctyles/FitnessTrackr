@@ -1,9 +1,13 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { fetchActivities } from "../api";
 import Activity from "./Activity";
 import CreateActivityForm from "./CreateActivityForm";
 
 const Activities = ({activities, setActivities, user, token}) => {
+
+    const [createActivityActive, setCreateActivityActive] = useState(false);
+
+
     useEffect(() => {
         const getActivities = async () => {
             const activities = await fetchActivities();
@@ -14,8 +18,15 @@ const Activities = ({activities, setActivities, user, token}) => {
 
     return (
         <div>
-            <h1>Activities</h1>
+            <h1 className="mt-3 ml-3">Activities</h1>
+            <button className="mt-3 ml-3 align-self-start btn btn-outline-light"
+                onClick={() => {setCreateActivityActive(!createActivityActive)}}>
+                {!createActivityActive ? 'Create New Activity' : 'Hide New Activity Form'}
+                </button>
+            {
+            createActivityActive &&
             <CreateActivityForm setActivities={setActivities} token={token}/>
+            }
             {
                 activities.map(activity => {
                     return <Activity key={activity.id} activity={activity} setActivities={setActivities} token={token}/>

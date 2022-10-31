@@ -130,3 +130,15 @@ export const deleteRoutineActivity = async (token, id) => {
     const data = await callApi({method: 'DELETE', path, token})
     return data;
 }
+
+export const updateRoutineActivity = async (token, id, count, duration) => {
+    const path = `routine_activities/${id}`
+
+    const data = await callApi({method: 'PATCH', path, token, body :
+        {
+          count,
+          duration
+        },
+    })
+    return data;
+}

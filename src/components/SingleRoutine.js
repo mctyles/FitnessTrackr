@@ -43,28 +43,30 @@ const SingleRoutine = ({ routines, user, token, setRoutines, userRoutines }) => 
                         activities.map(activity => <Activity key={activity.id} activity={activity}/>)
                     }
                     {
-                        !activities.length && <p>No activities to display.</p>
+                        !activities.length && <p className='text-dark'>No activities to display.</p>
                     }
                     
                 </div>
-                <Link to="/routines" className="btn btn-link text-info">Back to routines</Link>
-                    { user && routine.creatorName === user.username ?
-                    <button className="btn btn-link text-info" onClick={() => setEditRoutineActive(!editRoutineActive)}>Edit Routine</button>
-                    :
-                    null
-                    }
-                    {
-                    user && routine.creatorName === user.username ? (
-                    <button
-                    className="btn btn-link text-danger"
-                    onClick={() => destroyRoutine(token, routine.id)}
-                    >
-                    Delete Routine
-                    </button>
-                    )
-                    :
-                    null
-                    }
+                <div>
+                    <Link to="/routines" className="btn btn-link text-info">Back to routines</Link>
+                        { user && routine.creatorName === user.username ?
+                        <button className="btn btn-link text-info" onClick={() => setEditRoutineActive(!editRoutineActive)}>Edit Routine</button>
+                        :
+                        null
+                        }
+                        {
+                        user && routine.creatorName === user.username ? (
+                        <button
+                        className="btn btn-link text-danger"
+                        onClick={() => destroyRoutine(token, routine.id)}
+                        >
+                        Delete Routine
+                        </button>
+                        )
+                        :
+                        null
+                        }
+                </div>
             </section>
             :
             <EditRoutine routine={routine} setEditRoutineActive={setEditRoutineActive} token={token}/>

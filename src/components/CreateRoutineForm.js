@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { addRoutine } from '../api';
 
-const CreateRoutineForm = ({setRoutines, token}) => {
+const CreateRoutineForm = ({setUserRoutines, token}) => {
     const [routineName, setRoutineName] = useState('');
     const [routineGoal, setRoutineGoal] = useState('');
     const [isPublic, setIsPublic] = useState(false);
@@ -10,7 +10,7 @@ const CreateRoutineForm = ({setRoutines, token}) => {
         try {
             event.preventDefault()
             const newRoutine = await addRoutine(token, routineName, routineGoal, isPublic);
-            setRoutines((prev) => [newRoutine, ...prev]);
+            setUserRoutines((prev) => [newRoutine, ...prev]);
             setRoutineName("");
             setRoutineGoal("");
             setIsPublic(false);

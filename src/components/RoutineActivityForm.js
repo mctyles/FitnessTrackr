@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { addActivityToRoutine, fetchActivities } from '../api';
 import { useNavigate } from 'react-router-dom'
 
-const RoutineActivityForm = ({activities, setActivities, routine, token}) => {
+const RoutineActivityForm = ({activities, setActivities, routine, token, setSuccessMsg}) => {
     
     const [count, setCount] = useState('');
     const [duration, setDuration] = useState('');
@@ -25,7 +25,8 @@ const RoutineActivityForm = ({activities, setActivities, routine, token}) => {
             const newRoutineActivity = await addActivityToRoutine(token, routine.id, activityId, count, duration);
             setCount("");
             setDuration("");
-            navigate('/user/routines')
+            setSuccessMsg(`Routine Activity has sucessfully been added to ${routine.name}`)
+            navigate('/')
         } catch(err) {
             console.error(err);
         }
@@ -39,13 +40,13 @@ const RoutineActivityForm = ({activities, setActivities, routine, token}) => {
                 className="d-flex flex-column align-items-start m-3"
                 onSubmit={handleSubmit}
                 >
-                    <label className="text-dark" for="activities">Select an activity to add:</label>
+                    <label className="text-dark" htmlFor="activities">Select an activity to add:</label>
                     <select className="text-dark p-1" id="activities" name="activities" onChange={(event) => setActivityId(event.target.value)}>
                         {
-                            activities.map(activity => <option value={activity.id}>{activity.name}</option>)
+                            activities.map((activity, idx) => <option key = {idx} value={activity.id}>{activity.name}</option>)
                         }
                     </select>
-                    <label className="text-dark" htmlFor="count">Count:</label>
+                    <label className="mt-3 text-dark" htmlFor="count">Count:</label>
                     <input type="text" 
                         name="count"
                         className="form-control"

@@ -14,7 +14,7 @@ const EditRoutine = ({routine, setEditRoutineActive, token}) => {
         try {
             event.preventDefault()
             const editedRoutine = await updateRoutine(token, routineName, routineGoal, isPublic, routineId);
-            navigate(`/routines/${routineId}`)
+            navigate('/user/routines/')
         } catch(err) {
             console.error(err);
         }
@@ -34,7 +34,7 @@ const EditRoutine = ({routine, setEditRoutineActive, token}) => {
                         value={routineName}
                         onChange={(event) => setRoutineName(event.target.value)}
                     />
-                    <label className="mt-2" htmlFor="goal">Goal:</label>
+                    <label className="mt-2 text-dark" htmlFor="goal">Goal:</label>
                     <textarea type="text" 
                         name="goal"
                         className="form-control card-text text-dark"
@@ -42,7 +42,7 @@ const EditRoutine = ({routine, setEditRoutineActive, token}) => {
                         onChange={(event) => setRoutineGoal(event.target.value)}
                     />
                     <div className="d-flex flex-column align-items-start">
-                        <label className="mt-2" htmlFor="public-option">Public Routine</label>
+                        <label className="mt-2 text-dark" htmlFor="public-option">Public Routine</label>
                         <input type="checkbox" 
                             name="public-option"
                             id="public-checkbox"
@@ -55,8 +55,10 @@ const EditRoutine = ({routine, setEditRoutineActive, token}) => {
                             }}
                         />
                     </div>
-                    <button className="btn btn-outline-light mt-3" type='submit'>Submit Changes</button>
-                    <button className="btn btn-outline-danger ml-2" onClick={() => setEditRoutineActive(false)}>Cancel</button>
+                    <div className="button-container mt-3">
+                        <button className="btn btn-outline-dark" type='submit'>Submit Changes</button>
+                        <button className="btn btn-outline-danger ml-2" onClick={() => setEditRoutineActive(false)}>Cancel</button>
+                        </div>
                 </form>
         }
         </div>

@@ -3,7 +3,7 @@ import { fetchRoutines } from "../api";
 import Routine from "./Routine";
 import CreateRoutineForm from "./CreateRoutineForm";
 
-const Routines = ({activities, setActivities, routines, setRoutines, token, user}) => {
+const Routines = ({activities, setActivities, routines, setRoutines, token, user, setSuccessMsg}) => {
     
     useEffect(() => {
         const getRoutines = async () => {
@@ -15,10 +15,10 @@ const Routines = ({activities, setActivities, routines, setRoutines, token, user
 
     return (
         <div className="d-flex flex-column align-content-center">
-            <h1 className="m-3">Routines</h1>
+            <h1 className="m-3">Community Routines</h1>
             {
                 routines.map(routine => {
-                    return <Routine key={routine.id} activities={activities} setActivities={setActivities} routine={routine} setRoutines={setRoutines} token={token} user={user}/>
+                    return <Routine key={routine.id} activities={activities} setActivities={setActivities} routine={routine} setRoutines={setRoutines} token={token} user={user} setSuccessMsg={setSuccessMsg}/>
                 })
             }
         </div>

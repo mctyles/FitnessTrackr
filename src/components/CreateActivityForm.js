@@ -41,7 +41,7 @@ const CreateActivityForm = ({ setActivities, token }) => {
                         value={activityDescription}
                         onChange={(event) => setActivityDescription(event.target.value)}
                     />
-                    <button className="mt-2 btn btn-outline-dark" type='submit'>Post</button>
+                    <button className="mt-3 btn btn-outline-light" type='submit'>Post</button>
                 </form>
         }
         </div>
