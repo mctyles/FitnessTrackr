@@ -1,4 +1,4 @@
-const baseUrl = "https://calm-headland-51316.herokuapp.com/api/";
+const baseUrl = "https://fittrak.onrender.com/api/";
 
 export const callApi = async ({ method, path, token, body }) => {
   const options = {
